@@ -12,6 +12,10 @@ import com.facebook.soloader.SoLoader;
 import com.fooddeliveryapp.newarchitecture.MainApplicationReactNativeHost;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+// =========
+// import com.facebook.react.bridge.JSIModulePackage;
+// import com.swmansion.reanimated.ReanimatedJSIModulePackage;
+
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -40,6 +44,10 @@ public class MainApplication extends Application implements ReactApplication {
   private final ReactNativeHost mNewArchitectureNativeHost =
       new MainApplicationReactNativeHost(this);
 
+// =====================================================
+// protected JSIModulePackage getJSIModulePackage(){
+//   return new ReanimatedJSIModulePackage();
+// }
   @Override
   public ReactNativeHost getReactNativeHost() {
     if (BuildConfig.IS_NEW_ARCHITECTURE_ENABLED) {

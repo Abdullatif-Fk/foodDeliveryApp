@@ -1,9 +1,10 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
-
-import {MainLayout} from './screens';
-
+import 'react-native-gesture-handler';
+import CustomDrawer from './navigation/CustomDrawer';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+// import MainLayout from './screens/MainLayout';
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -14,7 +15,7 @@ const App = () => {
           headerShown: false,
         }}
         initialRouteName={'Home'}>
-        <Stack.Screen name="Home" component={MainLayout} />
+        <Stack.Screen name="Home" component={CustomDrawer} />
       </Stack.Navigator>
     </NavigationContainer>
   );
