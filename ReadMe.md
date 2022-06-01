@@ -5,6 +5,7 @@ npm install @react-navigation/native react-native-reanimated react-native-gestur
 ### adb -s <device name> reverse tcp:8081 tcp:8081
 
 adb -s 2JNDU19121016115 reverse tcp:8081 tcp:8081
+adb -s emulator-5554 reverse tcp:8081 tcp:8081
 
 # 1-Disconnect the USB connection—or turn off the device's Wi-Fi if you're connected over Wi-Fi.
 
