@@ -1,9 +1,14 @@
 import React from 'react';
 import {View, TouchableOpacity, StyleSheet, Text, Image} from 'react-native';
 import {COLORS, FONTS, SIZES} from '../../constants';
-const CustomDrawerItem = ({label, icon}) => {
+const CustomDrawerItem = ({label, icon, isFocused, onPress}) => {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity
+      style={[
+        styles.container,
+        {backgroundColor: isFocused ? COLORS.transparentBlack1 : null},
+      ]}
+      onPress={() => onPress()}>
       <Image source={icon} style={styles.img} />
       <Text style={styles.label}>{label} </Text>
     </TouchableOpacity>

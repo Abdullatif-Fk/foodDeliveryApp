@@ -6,17 +6,14 @@ import {
 } from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
 import {COLORS} from '../../constants';
-import {MainLayout} from '../../screens';
+import {MainLayout, Notification} from '../../screens';
 import CustomDrawerContent from './CustomDrawerContent';
-import Animated, {
-  useAnimatedStyle,
-  useSharedValue,
-  withTiming,
-} from 'react-native-reanimated';
+import {connect} from 'react-redux';
+import {setSelectedTab} from '../../stores/tab/tabActions';
 
 const Drawer = createDrawerNavigator();
 
-const CustomDrawer = () => {
+const CustomDrawer = ({selectedTab, setSelectedTab}) => {
   return (
     <View style={styles.drawerContainer}>
       <Drawer.Navigator
@@ -38,10 +35,19 @@ const CustomDrawer = () => {
           },
         }}
         drawerContent={props => {
-          return <CustomDrawerContent navigation={props.navigation} />;
+          return (
+            <CustomDrawerContent
+              selectedTab={selectedTab}
+              setSelectedTab={setSelectedTab}
+              navigation={props.navigation}
+            />
+          );
         }}>
         <Drawer.Screen name="MainLayout">
           {props => <MainLayout {...props} />}
+        </Drawer.Screen>
+        <Drawer.Screen name="Notification">
+          {props => <Notification {...props} />}
         </Drawer.Screen>
       </Drawer.Navigator>
     </View>
@@ -54,4 +60,16 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CustomDrawer;
+function mapStateToProps(state) {
+  return {
+    selectedTab: state.tabReducer.selectedTab,
+  };
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    setSelectedTab: selectedTab => {
+      return dispatch(setSelectedTab(selectedTab));
+    },
+  };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(CustomDrawer);

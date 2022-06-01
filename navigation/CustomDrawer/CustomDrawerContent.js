@@ -17,7 +17,7 @@ import {
 } from '../../constants';
 import CloseButton from './CloseButton';
 import CustomDrawerItem from './CustomDrawerItem';
-const CustomDrawerContent = ({navigation}) => {
+const CustomDrawerContent = ({navigation, selectedTab, setSelectedTab}) => {
   return (
     <DrawerContentScrollView>
       <View style={styles.container}>
@@ -38,7 +38,15 @@ const CustomDrawerContent = ({navigation}) => {
         </TouchableOpacity>
         {/* Drawer Items */}
         <View style={styles.drawerItems}>
-          <CustomDrawerItem label={constants.screens.home} icon={icons.home} />
+          <CustomDrawerItem
+            label={constants.screens.home}
+            icon={icons.home}
+            isFocused={selectedTab == constants.screens.home}
+            onPress={() => {
+              setSelectedTab(constants.screens.home);
+              navigation.navigate('MainLayout');
+            }}
+          />
           <CustomDrawerItem
             label={constants.screens.my_wallet}
             icon={icons.wallet}
@@ -46,10 +54,20 @@ const CustomDrawerContent = ({navigation}) => {
           <CustomDrawerItem
             label={constants.screens.notification}
             icon={icons.notification}
+            isFocused={selectedTab == constants.screens.notification}
+            onPress={() => {
+              setSelectedTab(constants.screens.notification);
+              navigation.navigate('Notification');
+            }}
           />
           <CustomDrawerItem
             label={constants.screens.favourite}
             icon={icons.favourite}
+            isFocused={selectedTab == constants.screens.favourite}
+            onPress={() => {
+              setSelectedTab(constants.screens.favourite);
+              navigation.navigate('MainLayout');
+            }}
           />
           {/* Divider */}
           <HorizontalDivider />

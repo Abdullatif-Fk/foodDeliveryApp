@@ -4,13 +4,20 @@ import {NavigationContainer} from '@react-navigation/native';
 import 'react-native-gesture-handler';
 import {CartTab, MainLayout} from './screens';
 import CustomDrawer from './navigation/CustomDrawer/CustomDrawer';
-const Stack = createStackNavigator();
+import {createStore, applyMiddleware} from 'redux';
+import {Provider} from 'react-redux';
+import thunk from 'redux-thunk';
+import rootReducer from './stores/rootReducer';
 
+const Stack = createStackNavigator();
+const store = createStore(rootReducer, applyMiddleware(thunk));
 const App = () => {
   return (
-    <NavigationContainer>
-      <CustomDrawer />
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <CustomDrawer />
+      </NavigationContainer>
+    </Provider>
   );
 };
 
