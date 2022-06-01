@@ -1,18 +1,30 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, StyleSheet, Text} from 'react-native';
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import {
+  createDrawerNavigator,
+  useDrawerProgress,
+} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
 import {COLORS} from '../../constants';
 import {MainLayout} from '../../screens';
 import CustomDrawerContent from './CustomDrawerContent';
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
+
 const Drawer = createDrawerNavigator();
+
 const CustomDrawer = () => {
   return (
     <View style={styles.drawerContainer}>
       <Drawer.Navigator
+        drawerType="slide"
         initialRouteName="MainLayout"
         screenOptions={{
-          header: () => null,
+          headerTransparent: true,
+          headerTitle: '',
           drawerType: 'slide',
           overlayColor: 'transparent',
           drawerStyle: {
