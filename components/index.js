@@ -1,4 +1,5 @@
 import Header from './Header/Header';
 import HorizontalDivider from './HorizontalDivider/HorizontalDivider';
-
-export {Header, HorizontalDivider};
+import Footer from './Footer/Footer';
+import TabButton from './Tab/TabButton';
+export {Header, HorizontalDivider, Footer, TabButton};

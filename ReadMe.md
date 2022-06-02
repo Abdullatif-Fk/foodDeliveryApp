@@ -16,3 +16,5 @@ adb -s emulator-5554 reverse tcp:8081 tcp:8081
 # 4-Restart your Android device.
 
 # 5-After your device restarts, connect it via USB and run adb devices. This should start the ADB daemon. Your device should now be online again.
+
+# yarn add react-native-linear-gradient --save

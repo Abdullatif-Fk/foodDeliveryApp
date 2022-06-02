@@ -17,9 +17,10 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import {connect} from 'react-redux';
-import {Header} from '../components';
-import {constants} from '../constants';
+import {Footer, Header} from '../components';
+import {COLORS, constants} from '../constants';
 import {setSelectedTab} from '../stores/tab/tabActions';
+import LinearGradient from 'react-native-linear-gradient';
 const MainLayout = ({selectedTab, setSelectedTab}) => {
   React.useEffect(() => {
     setSelectedTab(constants.screens.home);
@@ -48,17 +49,18 @@ const MainLayout = ({selectedTab, setSelectedTab}) => {
       {/* HEADER  */}
       <Header title={String(selectedTab).toUpperCase()} />
       {/* CONTENT */}
-      <View style={styles.contentContainer}></View>
+      <View style={styles.contentContainer}>
+        <Text>Mainlayout</Text>
+      </View>
       {/* FOOTER */}
+      <Footer />
     </Animated.View>
   );
 };
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'white',
+    backgroundColor: COLORS.white,
   },
   contentContainer: {
     flex: 1,
