@@ -6,7 +6,7 @@ import {
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import Animated from 'react-native-reanimated';
-import HorizontalDivider from '../../components/HorizontalDivider/HorizontalDivider';
+import {HorizontalDivider} from '../../components';
 import {
   COLORS,
   constants,

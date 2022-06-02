@@ -1,6 +1,14 @@
 import {useDrawerStatus} from '@react-navigation/drawer';
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  Image,
+  FlatList,
+} from 'react-native';
 import Animated, {
   Extrapolate,
   interpolate,
@@ -8,7 +16,14 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-const MainLayout = () => {
+import {connect} from 'react-redux';
+import {Header} from '../components';
+import {constants} from '../constants';
+import {setSelectedTab} from '../stores/tab/tabActions';
+const MainLayout = ({selectedTab, setSelectedTab}) => {
+  React.useEffect(() => {
+    setSelectedTab(constants.screens.home);
+  }, []);
   const isDrawerOpen = useDrawerStatus();
   const progress = useSharedValue(0);
   React.useEffect(() => {
@@ -30,7 +45,11 @@ const MainLayout = () => {
   });
   return (
     <Animated.View style={[styles.container, screenStyle]}>
-      <Text>MainLayout</Text>
+      {/* HEADER  */}
+      <Header title={String(selectedTab).toUpperCase()} />
+      {/* CONTENT */}
+      <View style={styles.contentContainer}></View>
+      {/* FOOTER */}
     </Animated.View>
   );
 };
@@ -41,5 +60,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'white',
   },
+  contentContainer: {
+    flex: 1,
+  },
 });
-export default MainLayout;
+function mapStateToProps(state) {
+  return {
+    selectedTab: state.tabReducer.selectedTab,
+  };
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    setSelectedTab: selectedTab => {
+      return dispatch(setSelectedTab(selectedTab));
+    },
+  };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(MainLayout);

@@ -20,8 +20,7 @@ const CustomDrawer = ({selectedTab, setSelectedTab}) => {
         drawerType="slide"
         initialRouteName="MainLayout"
         screenOptions={{
-          headerTransparent: true,
-          headerTitle: '',
+          headerShown: false,
           drawerType: 'slide',
           overlayColor: 'transparent',
           drawerStyle: {
