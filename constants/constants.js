@@ -1,11 +1,11 @@
 const screens = {
-  main_layout: 'MainLayout',
   home: 'Home',
   search: 'Search',
   cart: 'Cart',
   favourite: 'Favourite',
   notification: 'Notification',
-  my_wallet: 'My Wallet',
+  wallet: 'My Wallet',
+  main_layout: 'MainLayout',
 };
 
 const bottom_tabs = [

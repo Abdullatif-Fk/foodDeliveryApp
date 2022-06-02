@@ -6,20 +6,9 @@ import {connect} from 'react-redux';
 import {COLORS, constants, icons, SIZES} from '../../constants';
 import {setSelectedTab} from '../../stores/tab/tabActions';
 import TabButton from '../Tab/TabButton';
-const Footer = ({selectedTab, setSelectedTab}) => {
-  //   const TabFlex = useSharedValue(1);
-  //   const TabColor = useSharedValue(COLORS.white);
-
-  //   const flexStyle = useAnimatedStyle(() => {
-  //     return {
-  //       flex: TabFlex.value,
-  //     };
-  //   });
-  //   const colorStyle = useAnimatedStyle(() => {
-  //     return {
-  //       backgroundColor: TabColor.value,
-  //     };
-  //   });
+const Footer = ({selectedTab, flatListRef}) => {
+  // const [icons,setIcons]=
+  // console.log(flatListRef);
   return (
     <View style={styles.container}>
       {/* Shadow */}
@@ -32,46 +21,53 @@ const Footer = ({selectedTab, setSelectedTab}) => {
       />
       {/* Tabs */}
       <View style={styles.tabsContainer}>
-        <TabButton
+        {Object.keys(constants.screens).map((key, index) =>
+          constants.screens.wallet != constants.screens[key] ? (
+            <TabButton
+              key={index}
+              flatListRef={flatListRef}
+              index={index}
+              label={constants.screens[key]}
+              icon={icons[key]}
+              isFocused={selectedTab == constants.screens[key]}
+            />
+          ) : null,
+        )}
+        {/* <TabButton
+          flatListRef={flatListRef}
+          index={0}
           label={constants.screens.home}
           icon={icons.home}
           isFocused={selectedTab == constants.screens.home}
-          onPress={() => {
-            setSelectedTab(constants.screens.home);
-          }}
         />
         <TabButton
+          flatListRef={flatListRef}
+          index={1}
           label={constants.screens.search}
           icon={icons.search}
           isFocused={selectedTab == constants.screens.search}
-          onPress={() => {
-            setSelectedTab(constants.screens.search);
-          }}
         />
         <TabButton
+          flatListRef={flatListRef}
+          index={2}
           label={constants.screens.cart}
           icon={icons.cart}
           isFocused={selectedTab == constants.screens.cart}
-          onPress={() => {
-            setSelectedTab(constants.screens.cart);
-          }}
         />
         <TabButton
+          flatListRef={flatListRef}
+          index={3}
           label={constants.screens.favourite}
           icon={icons.favourite}
           isFocused={selectedTab == constants.screens.favourite}
-          onPress={() => {
-            setSelectedTab(constants.screens.favourite);
-          }}
         />
         <TabButton
+          flatListRef={flatListRef}
+          index={4}
           label={constants.screens.notification}
           icon={icons.notification}
           isFocused={selectedTab == constants.screens.notification}
-          onPress={() => {
-            setSelectedTab(constants.screens.notification);
-          }}
-        />
+        /> */}
       </View>
     </View>
   );
@@ -100,6 +96,8 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     backgroundColor: COLORS.white,
+    // borderColor: 'red',
+    // borderWidth: 1,
   },
 });
 function mapStateToProps(state) {

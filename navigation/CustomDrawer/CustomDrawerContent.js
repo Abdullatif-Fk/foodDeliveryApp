@@ -42,36 +42,24 @@ const CustomDrawerContent = ({navigation, selectedTab, setSelectedTab}) => {
             label={constants.screens.home}
             icon={icons.home}
             isFocused={selectedTab == constants.screens.home}
-            onPress={() => {
-              setSelectedTab(constants.screens.home);
-              navigation.navigate('MainLayout');
-            }}
           />
           <CustomDrawerItem
-            label={constants.screens.my_wallet}
+            label={constants.screens.wallet}
             icon={icons.wallet}
+            isFocused={selectedTab == constants.screens.wallet}
           />
           <CustomDrawerItem
             label={constants.screens.notification}
             icon={icons.notification}
             isFocused={selectedTab == constants.screens.notification}
-            onPress={() => {
-              setSelectedTab(constants.screens.notification);
-              navigation.navigate('Notification');
-            }}
           />
           <CustomDrawerItem
             label={constants.screens.favourite}
             icon={icons.favourite}
             isFocused={selectedTab == constants.screens.favourite}
-            onPress={() => {
-              setSelectedTab(constants.screens.favourite);
-              navigation.navigate('MainLayout');
-            }}
           />
           {/* Divider */}
           <HorizontalDivider />
-
           <CustomDrawerItem label="Track Your Order" icon={icons.location} />
           <CustomDrawerItem label="Coupons" icon={icons.coupon} />
           <CustomDrawerItem label="Settings" icon={icons.setting} />

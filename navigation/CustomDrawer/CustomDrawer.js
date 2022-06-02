@@ -45,9 +45,9 @@ const CustomDrawer = ({selectedTab, setSelectedTab}) => {
         <Drawer.Screen name="MainLayout">
           {props => <MainLayout {...props} />}
         </Drawer.Screen>
-        <Drawer.Screen name="Notification">
+        {/* <Drawer.Screen name="Notification">
           {props => <Notification {...props} />}
-        </Drawer.Screen>
+        </Drawer.Screen> */}
       </Drawer.Navigator>
     </View>
   );

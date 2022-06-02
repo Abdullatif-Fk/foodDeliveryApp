@@ -22,6 +22,8 @@ const TabButton = ({
   onPress,
   selectedTab,
   setSelectedTab,
+  index,
+  flatListRef,
 }) => {
   const TabFlex = useSharedValue(1);
   const TabColor = useSharedValue(COLORS.white);
@@ -41,13 +43,17 @@ const TabButton = ({
     if (selectedTab == label) {
       TabFlex.value = withTiming(3, {duration: 500});
       TabColor.value = withTiming(COLORS.primary, {duration: 500});
+      flatListRef?.current?.scrollToIndex({
+        index: index,
+        animated: false,
+      });
     } else {
       TabFlex.value = withTiming(1, {duration: 500});
       TabColor.value = withTiming(COLORS.white, {duration: 500});
     }
   }, [selectedTab]);
   return (
-    <TouchableWithoutFeedback onPress={onPress}>
+    <TouchableWithoutFeedback onPress={() => setSelectedTab(label)}>
       <Animated.View style={[styles.container, flexStyle]}>
         <Animated.View style={[styles.tab, colorStyle]}>
           <Image
@@ -65,6 +71,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    // borderColor: 'red',
+    // borderWidth: 1,
   },
   tab: {
     flexDirection: 'row',

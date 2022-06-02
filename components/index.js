@@ -2,4 +2,15 @@ import Header from './Header/Header';
 import HorizontalDivider from './HorizontalDivider/HorizontalDivider';
 import Footer from './Footer/Footer';
 import TabButton from './Tab/TabButton';
-export {Header, HorizontalDivider, Footer, TabButton};
+import Search from './Search/Search';
+import HorizontalfoodCard from './HorizontalfoodCard/HorizontalfoodCard';
+import MenuTypes from './MenuTypes/MenuTypes';
+export {
+  Header,
+  HorizontalDivider,
+  Footer,
+  TabButton,
+  Search,
+  HorizontalfoodCard,
+  MenuTypes,
+};
