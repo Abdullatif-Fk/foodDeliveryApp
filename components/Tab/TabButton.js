@@ -41,7 +41,7 @@ const TabButton = ({
 
   React.useEffect(() => {
     if (selectedTab == label) {
-      TabFlex.value = withTiming(3, {duration: 500});
+      TabFlex.value = withTiming(4, {duration: 500});
       TabColor.value = withTiming(COLORS.primary, {duration: 500});
       flatListRef?.current?.scrollToIndex({
         index: index,
