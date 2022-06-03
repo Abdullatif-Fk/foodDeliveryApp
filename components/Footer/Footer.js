@@ -21,53 +21,20 @@ const Footer = ({selectedTab, flatListRef}) => {
       />
       {/* Tabs */}
       <View style={styles.tabsContainer}>
-        {Object.keys(constants.screens).map((key, index) =>
-          constants.screens.wallet != constants.screens[key] ? (
-            <TabButton
-              key={index}
-              flatListRef={flatListRef}
-              index={index}
-              label={constants.screens[key]}
-              icon={icons[key]}
-              isFocused={selectedTab == constants.screens[key]}
-            />
-          ) : null,
+        {Object.keys(constants.screens).map(
+          (key, index) =>
+            constants.screens.wallet != constants.screens[key] &&
+            constants.screens.main_layout != constants.screens[key] && (
+              <TabButton
+                key={index}
+                flatListRef={flatListRef}
+                index={index}
+                label={constants.screens[key]}
+                icon={icons[key]}
+                isFocused={selectedTab == constants.screens[key]}
+              />
+            ),
         )}
-        {/* <TabButton
-          flatListRef={flatListRef}
-          index={0}
-          label={constants.screens.home}
-          icon={icons.home}
-          isFocused={selectedTab == constants.screens.home}
-        />
-        <TabButton
-          flatListRef={flatListRef}
-          index={1}
-          label={constants.screens.search}
-          icon={icons.search}
-          isFocused={selectedTab == constants.screens.search}
-        />
-        <TabButton
-          flatListRef={flatListRef}
-          index={2}
-          label={constants.screens.cart}
-          icon={icons.cart}
-          isFocused={selectedTab == constants.screens.cart}
-        />
-        <TabButton
-          flatListRef={flatListRef}
-          index={3}
-          label={constants.screens.favourite}
-          icon={icons.favourite}
-          isFocused={selectedTab == constants.screens.favourite}
-        />
-        <TabButton
-          flatListRef={flatListRef}
-          index={4}
-          label={constants.screens.notification}
-          icon={icons.notification}
-          isFocused={selectedTab == constants.screens.notification}
-        /> */}
       </View>
     </View>
   );

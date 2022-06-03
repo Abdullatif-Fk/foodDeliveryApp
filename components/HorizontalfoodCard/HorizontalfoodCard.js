@@ -4,7 +4,6 @@ import {COLORS, FONTS, icons, SIZES} from '../../constants';
 
 const HorizontalfoodCard = ({item, containerStyle, imgStyle}) => {
   // console.log('Horizontal========================================');
-  console.log(item.name);
   return (
     <TouchableOpacity
       activeOpacity={1}
