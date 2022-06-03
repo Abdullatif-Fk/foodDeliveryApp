@@ -2,11 +2,15 @@ import React from 'react';
 import {Text, View, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import {COLORS, FONTS, icons, SIZES} from '../../constants';
 
-const HorizontalfoodCard = ({item}) => {
+const HorizontalfoodCard = ({item, containerStyle, imgStyle}) => {
+  // console.log('Horizontal========================================');
+  console.log(item.name);
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity
+      activeOpacity={1}
+      style={[styles.container, containerStyle]}>
       {/* Image */}
-      <Image source={item.image} style={styles.img} />
+      <Image source={item.image} style={[styles.img, imgStyle]} />
       {/* Info */}
       <View style={styles.info}>
         <Text style={styles.name}> {item.name} </Text>

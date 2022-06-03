@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Text,
   View,
@@ -7,15 +7,49 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import {COLORS, FONTS, icons, SIZES} from '../../constants';
+import {COLORS, dummyData, FONTS, icons, SIZES} from '../../constants';
 
-const Search = () => {
+const Search = ({setMenuList, handleChangeCategory}) => {
+  function search(text) {
+    // console.log(dummyData.menu[0].list[0].name);
+    if (String(text).length > 0) {
+      let searchedList = [];
+      searchedList = dummyData.foods.filter(
+        food =>
+          food.name
+            .trim()
+            .toLocaleLowerCase()
+            .includes(String(text).trim().toLocaleLowerCase()) ||
+          food.description
+            .trim()
+            .toLocaleLowerCase()
+            .includes(String(text).trim().toLocaleLowerCase()),
+      );
+      console.log(searchedList);
+      setMenuList(searchedList);
+    } else {
+      handleChangeCategory(1, 1);
+    }
+
+    // if (String(text) == '') {
+    //   // handleChangeCategory(1, 1);
+    // }
+  }
+  const [serachText, setSearchText] = useState('');
   return (
     <View style={styles.container}>
       {/* ICON */}
       <Image source={icons.search} style={styles.icon} />
       {/* TEXT INPUT */}
-      <TextInput style={styles.input} placeholder="search food...." />
+      <TextInput
+        style={styles.input}
+        onChangeText={value => {
+          setSearchText(value);
+          setTimeout(() => search(serachText), 500);
+        }}
+        value={serachText}
+        placeholder="search food...."
+      />
       {/* FILTER BUTTON */}
       <TouchableOpacity>
         <Image source={icons.filter} style={styles.icon} />

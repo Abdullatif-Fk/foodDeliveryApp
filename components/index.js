@@ -5,6 +5,7 @@ import TabButton from './Tab/TabButton';
 import Search from './Search/Search';
 import HorizontalfoodCard from './HorizontalfoodCard/HorizontalfoodCard';
 import MenuTypes from './MenuTypes/MenuTypes';
+import RecommendedSection from './RecommendedSection/RecommendedSection';
 export {
   Header,
   HorizontalDivider,
@@ -13,4 +14,5 @@ export {
   Search,
   HorizontalfoodCard,
   MenuTypes,
+  RecommendedSection,
 };
