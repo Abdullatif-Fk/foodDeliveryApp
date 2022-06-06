@@ -8,7 +8,9 @@ import MenuTypes from './MenuTypes/MenuTypes';
 import RecommendedSection from './RecommendedSection/RecommendedSection';
 import PopularSection from './PopularSection/PopularSection';
 import VerticalFoodCard from './VerticalFoodCard/VerticalFoodCard';
+import FoodCategories from './FoodCategories/FoodCategories';
 export {
+  FoodCategories,
   Header,
   HorizontalDivider,
   VerticalFoodCard,

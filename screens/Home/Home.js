@@ -9,6 +9,7 @@ import {
   FlatList,
 } from 'react-native';
 import {
+  FoodCategories,
   HorizontalDivider,
   HorizontalfoodCard,
   MenuTypes,
@@ -28,6 +29,8 @@ const Home = () => {
     handleChangeCategory(selectedCategoryId, selectedMenuType);
   }, []);
   const handleChangeCategory = (categoryId, menuTypeId) => {
+    setMenuList([]);
+
     //Find Popular List
     let selectedPopular = dummyData.menu.find(menu => menu.name == 'Popular');
 
@@ -69,6 +72,7 @@ const Home = () => {
         showsVerticalScrollIndicator={false}
         ListHeaderComponent={
           <>
+            <FoodCategories />
             <PopularSection popular={popular} />
             <RecommendedSection recommends={recommends} />
             <MenuTypes

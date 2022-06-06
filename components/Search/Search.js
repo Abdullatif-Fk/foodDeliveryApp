@@ -18,12 +18,12 @@ const Search = ({setMenuList, handleChangeCategory}) => {
         food =>
           food.name
             .trim()
-            .toLocaleLowerCase()
-            .includes(String(text).trim().toLocaleLowerCase()) ||
+            .toLowerCase()
+            .includes(String(text).trim().toLowerCase()) ||
           food.description
             .trim()
-            .toLocaleLowerCase()
-            .includes(String(text).trim().toLocaleLowerCase()),
+            .toLowerCase()
+            .includes(String(text).trim().toLowerCase()),
       );
       console.log(searchedList);
       setMenuList(searchedList);
